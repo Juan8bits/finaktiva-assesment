@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - POSTGRES_HOST=postgres #${POSTGRES_HOST}
+      - POSTGRES_PORT=5432 #${POSTGRES_PORT}
+      - POSTGRES_DB=finaktiva-assesment #${POSTGRES_DB}
+      - POSTGRES_USER=admin #${POSTGRES_USER}
+      - POSTGRES_PASSWORD=admin #${POSTGRES_PASSWORD}
+      - REDIS_HOST=redis #${REDIS_HOST}
+      - REDIS_PORT=6379 #${REDIS_PORT}
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:13.4
+    environment:
+      POSTGRES_DB: finaktiva-assesment #${POSTGRES_DB}
+      POSTGRES_USER: admin #${POSTGRES_USER}
+      POSTGRES_PASSWORD: admin #${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:6.2.5
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
