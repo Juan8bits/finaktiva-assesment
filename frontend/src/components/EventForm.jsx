@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { createEvent } from "../utils/api";
 
+// Definir el esquema con un enum para el tipo de evento
 const eventSchema = z.object({
     description: z.string().min(1, "El nombre del evento es requerido"),
     date: z.string().min(1, "La fecha del evento es requerida"),
-    type: z.string().min(1, "El tipo de evento es requerido"),
+    type: z.enum(['info', 'warning', 'error'], "El tipo de evento es requerido"),
 });
 
 export default function EventForm() {
@@ -25,7 +26,11 @@ export default function EventForm() {
         e.preventDefault();
         try {
             const validatedData = eventSchema.parse(formData);
-            await createEvent(validatedData);
+
+            // Agregar la propiedad fromApp: true al objeto validado
+            const dataToSubmit = { ...validatedData, fromApp: true };
+
+            await createEvent(dataToSubmit);
             alert("Evento creado exitosamente");
             setFormData({
                 description: "",
@@ -76,14 +81,18 @@ export default function EventForm() {
                 <label htmlFor="type" className="font-semibold text-lg block mb-1">
                     Tipo de evento:
                 </label>
-                <input
-                    type="text"
+                <select
                     id="type"
                     name="type"
                     value={formData.type}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border rounded"
-                />
+                    className="w-full px-3 py-2 border rounded bg-white"
+                >
+                    <option value="">Seleccione el tipo de evento</option>
+                    <option value="info">Información</option>
+                    <option value="warning">Advertencia</option>
+                    <option value="error">Error</option>
+                </select>
                 {errors.type && <p className="text-red-500">{errors.type}</p>}
             </div>
             <button

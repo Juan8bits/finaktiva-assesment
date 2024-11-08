@@ -1,7 +1,8 @@
 class BaseRepositoryInterface {
-    constructor(adapterModel, domainModel) {
+    constructor(adapterModel, domainModel, functionErrorHandler) {
         this.adapterModel = adapterModel
         this.domainModel = domainModel
+        this.functionErrorHandler = functionErrorHandler()
     }
     create(data) {
         throw new Error("Method 'create' must be implemented.");

@@ -4,6 +4,7 @@ const { LogsRepository } = require('../infrastructure/adapters/repositories')
 const { LogService } = require('./services')
 const { DataTypes} = require("sequelize")
 const initializeDatabase = require("../infrastructure/adapters/database/config");
+const { functionErrorHandler } = require('../application/loaders/errorHandler')
 
 // Injection implementations
 module.exports = async (config) => {
@@ -18,13 +19,15 @@ module.exports = async (config) => {
             LogRepository: new LogsRepository(
                 adapterModels.logs,
                 Log,
+                functionErrorHandler
             ),
         }
 
         const services = {
             LogService: new LogService(
                 repositories,
-                config
+                config,
+                functionErrorHandler
             )
         }
         return services

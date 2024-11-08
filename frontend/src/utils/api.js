@@ -16,12 +16,11 @@ export async function createEvent(eventData) {
     return await response.json();
 }
 
-export async function getEvents() {
-    const response = await fetch(`${API_URL}/logs`);
-
+export const getEvents = async (eventType = "") => {
+    const url = eventType ? `${API_URL}/logs?type=${eventType}` : `${API_URL}/logs`; // Agrega el filtro si existe
+    const response = await fetch(url);
     if (!response.ok) {
-        throw new Error('Error al obtener los eventos');
+        throw new Error("No se pudieron obtener los eventos");
     }
-
     return await response.json();
-}
+};

@@ -11,6 +11,7 @@ const startWorker = async () => {
     app.listen(config.port, () => {
         console.info(`Server running on http://localhost:${config.port}${config.api.prefix}status`);
     });
+
 };
 
 if (cluster.isMaster) {

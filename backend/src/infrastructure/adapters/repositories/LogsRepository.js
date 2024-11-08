@@ -1,10 +1,15 @@
 const BaseRepositoryInterface = require("./BaseRepository.interface");
+const {ServerError} = require("../../../application/domain/utils/error/errors");
 
 class LogsRepository extends BaseRepositoryInterface {
 
     async create(logData) {
-        const newLog = await this.adapterModel.create(logData)
-        return new this.domainModel(newLog)
+        try {
+            const newLog = await this.adapterModel.create(logData)
+            return new this.domainModel(newLog)
+        } catch (error) {
+            return this.functionErrorHandler(error, new ServerError(20001))
+        }
     }
 
     async findAll({ conditions, properties, order, limit, offset }) {
@@ -18,7 +23,7 @@ class LogsRepository extends BaseRepositoryInterface {
             })
             return logs.map((log) => new this.domainModel(log))
         } catch (error) {
-            throw new Error(`Failed to find log data. ${error}`);
+            return this.functionErrorHandler(error, new ServerError(20001))
         }
     }
 

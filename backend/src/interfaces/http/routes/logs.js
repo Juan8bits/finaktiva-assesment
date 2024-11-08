@@ -2,8 +2,8 @@ module.exports = (route, config, services) => {
 
     route.get('/logs', async (req, res, next) => {
         try {
-            const { page, perPage } = req.query;
-            const logs = await services.LogService.getAll({ page, perPage })
+            const { type, page, perPage } = req.query;
+            const logs = await services.LogService.getAll({ type, page, perPage })
             return res.status(200).send(logs)
         } catch (error) {
             return next(error);
