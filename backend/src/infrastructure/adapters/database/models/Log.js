@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         {
-            timestamps: true,
+            timestamps: false,
             underscored: true,
             sequelize,
             modelName: 'Log',

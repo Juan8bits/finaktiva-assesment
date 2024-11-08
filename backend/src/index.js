@@ -1,8 +1,6 @@
 const express = require('express');
 const dependencyManager = require('./application/dependencyManager');
 const routes = require('./interfaces/http/routes');
-// const { initializeDatabase } = require('./infrastructure/database/config');
-// const setupRoutes = require('./interfaces/http/routes');
 const config = require('./config');
 
 const createExpressServer = async () => {
@@ -14,4 +12,4 @@ const createExpressServer = async () => {
 
     return app;
 }
-module.exports = createExpressServer();
+module.exports = createExpressServer;

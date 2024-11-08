@@ -1,16 +1,17 @@
 const ServiceBase = require("./ServiceBase");
 
 class LogService extends ServiceBase {
-    constructor(repositories) {
-        super(repositories);
+    constructor(repositories, config) {
+        super(repositories, config);
+        this.config = config
     }
 
     async create(logData) {
-        return true;
+        return this.repositories.LogRepository.create(logData);
     }
 
-    async getAll(id) {
-        return false;
+    async getAll({ page, perPage }) {
+        return this.repositories.LogRepository.findAll({ offset: perPage * (page - 1), limit: perPage});
     }
 
 }
