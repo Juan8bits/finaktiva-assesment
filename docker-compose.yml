@@ -23,7 +23,7 @@ services:
     environment:
       - POSTGRES_HOST=postgres #${POSTGRES_HOST}
       - POSTGRES_PORT=5432 #${POSTGRES_PORT}
-      - POSTGRES_DB=finaktiva-assesment #${POSTGRES_DB}
+      - POSTGRES_DB=registration #${POSTGRES_DB}
       - POSTGRES_USER=admin #${POSTGRES_USER}
       - POSTGRES_PASSWORD=admin #${POSTGRES_PASSWORD}
       - REDIS_HOST=redis #${REDIS_HOST}

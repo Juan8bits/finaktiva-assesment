@@ -8,8 +8,7 @@
   },
   "scripts": {
     "startDev": "nodemon --use_strict ./src/server.js",
-    "startTwo": "npx sequelize-cli db:migrate && node --use_strict ./src/server.js",
-    "start": "node --use_strict ./src/server.js",
+    "start": "npx sequelize-cli db:migrate && node --use_strict ./src/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:watch": "nodemon --exec eslint . --ext .js,.jsx,.ts,.tsx"
@@ -17,8 +16,10 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "mysql2": "^3.11.4",
     "pg": "^8.13.1",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",

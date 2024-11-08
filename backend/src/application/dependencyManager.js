@@ -1,9 +1,9 @@
 const { Log } = require('./domain/models')
-const { LogModel } = require('../infraestructure/adapters/database/models')
-const { LogsRepository } = require('../infraestructure/adapters/repositories')
+const { LogModel } = require('../infrastructure/adapters/database/models')
+const { LogsRepository } = require('../infrastructure/adapters/repositories')
 const { LogService } = require('./services')
 const { DataTypes} = require("sequelize")
-const initializeDatabase = require("../infraestructure/adapters/database/config");
+const initializeDatabase = require("../infrastructure/adapters/database/config");
 
 // Injection implementations
 module.exports = async (config) => {

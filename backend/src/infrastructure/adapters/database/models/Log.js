@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             type: {
                 type: DataTypes.ENUM(logType.INFO, logType.ERROR, logType.WARNING),
-                allowNull: true
+                allowNull: false
             },
             date: {
                 type: DataTypes.DATE,
