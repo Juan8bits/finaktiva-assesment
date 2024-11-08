@@ -13,6 +13,11 @@ const config = {
         database: process.env.DB_NAME || 'registration',
         timezone: process.env.PG_TIMEZONE || 'UTC'
     },
+    rateLimit: {
+        windowMs: process.env.RATE_LIMIT_TIME || 15 * 60 * 1000, // 15 minutes
+        max: process.env.RATE_LIMIT_REQ || 10000, // limit each IP to 100 requests per windowMs. Higher value for stress test
+        delayMs: 0 // disable delaying - full speed until the max limit is reached
+    }
 };
 
 module.exports = config;

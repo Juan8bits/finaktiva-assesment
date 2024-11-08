@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventForm from '../components/EventForm.jsx';
+import EventList from '../components/EventList.jsx';
+---
+
+<Layout title="Event Logger">
+  <main class="grid h-screen place-items-center">
+    <h1 class="text-5xl font-bold mb-4">Event Logger</h1>
+	<EventForm client:load />
+	<EventList client:load />
+  </main>
+</Layout>
