@@ -53,47 +53,50 @@ export default function EventForm() {
                 <label htmlFor="description" className="font-semibold text-lg block mb-1">
                     Descripción del evento:
                 </label>
-                <input
-                    type="text"
+                <textarea
                     id="description"
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border rounded"
+                    className="w-full px-3 py-2 border rounded h-40"
+                    maxLength="500"
+                    placeholder="Descripción del evento (máximo 500 caracteres)"
                 />
                 {errors.description && <p className="text-red-500">{errors.description}</p>}
             </div>
-            <div>
-                <label htmlFor="date" className="font-semibold text-lg block mb-1">
-                    Fecha del evento:
-                </label>
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border rounded"
-                />
-                {errors.date && <p className="text-red-500">{errors.date}</p>}
-            </div>
-            <div>
-                <label htmlFor="type" className="font-semibold text-lg block mb-1">
-                    Tipo de evento:
-                </label>
-                <select
-                    id="type"
-                    name="type"
-                    value={formData.type}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border rounded bg-white"
-                >
-                    <option value="">Seleccione el tipo de evento</option>
-                    <option value="info">Información</option>
-                    <option value="warning">Advertencia</option>
-                    <option value="error">Error</option>
-                </select>
-                {errors.type && <p className="text-red-500">{errors.type}</p>}
+            <div className="flex space-x-4">
+                <div className="flex-1">
+                    <label htmlFor="date" className="font-semibold text-lg block mb-1">
+                        Fecha del evento:
+                    </label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2 border rounded"
+                    />
+                    {errors.date && <p className="text-red-500">{errors.date}</p>}
+                </div>
+                <div className="flex-1">
+                    <label htmlFor="type" className="font-semibold text-lg block mb-1">
+                        Tipo de evento:
+                    </label>
+                    <select
+                        id="type"
+                        name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2 border rounded bg-white"
+                    >
+                        <option value="">Seleccione el tipo de evento</option>
+                        <option value="info">Información</option>
+                        <option value="warning">Advertencia</option>
+                        <option value="error">Error</option>
+                    </select>
+                    {errors.type && <p className="text-red-500">{errors.type}</p>}
+                </div>
             </div>
             <button
                 type="submit"

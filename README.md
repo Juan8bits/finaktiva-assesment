@@ -55,3 +55,6 @@ Requests per second:    1279.65 [#/sec] (mean)
 ```
 
 **Nota**: En el archivo `data.json` se encuentran los datos necesarios para la prueba de carga en el endpoint `/api/v1.0/logs/create`.
+
+## Video de muestra
+- **Enlace** [aquí](https://jam.dev/c/b0821140-032b-4192-b89b-6aba65194277)

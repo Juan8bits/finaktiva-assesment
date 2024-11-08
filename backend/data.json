@@ -1,5 +1,6 @@
 {
   "description": "Texto de 500 caracteres. Donec tincidunt et orci sit amet congue. Nunc bibendum imperdiet massa ac tempor. Morbi non maximus purus, sit amet sagittis elit. Vestibulum vitae feugiat ipsum. Sed molestie ipsum vel velit eleifend, at efficitur ante imperdiet. Nunc cursus luctus blandit. Pellentesque posuere sapien quis arcu viverra congue. Donec at suscipit orci. Praesent vitae suscipit justo. Sed id malesuada ligula. Donec convallis ligula in sodales auctor",
   "type": "error",
-  "date": "2024-11-08 03:30:45.019000"
+  "date": "2024-11-08 03:30:45.019000",
+  "fromApp": false
 }
