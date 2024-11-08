@@ -1,8 +1,10 @@
 const app = require('./index');
 const config = require('./config');
-
-const PORT = config.port
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+require('./index').then((app) => {
+    app.listen(config.port, (err) => {
+        if (err) {
+            process.exit(1)
+        }
+        console.info(`Server running on http://localhost:${config.port}${config.api.prefix}status`);
+    })
+})
