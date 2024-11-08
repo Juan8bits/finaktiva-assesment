@@ -16,7 +16,7 @@ export async function createEvent(eventData) {
     return await response.json();
 }
 
-export const getEvents = async (eventType = null) => {
+export const getEvents = async (eventType = null, origin) => {
     const url = eventType ? `${API_URL}/logs?type=${eventType}` : `${API_URL}/logs`; // Agrega el filtro si existe
     const response = await fetch(url);
     if (!response.ok) {

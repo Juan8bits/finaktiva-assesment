@@ -1,11 +1,28 @@
 # Dockerfile para Frontend
-FROM node:18
+FROM node:18 AS build
 
+# Establecer el directorio de trabajo
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+
+# Instalar las dependencias
+RUN npm install --frozen-lockfile
+
+# Copiar el resto del código fuente
 COPY . .
+
+# Ejecutar la compilación para producción
+RUN npm run build
+
+
+FROM node:18 AS production
+
+# Establecer el directorio de trabajo
+WORKDIR /app
+
+COPY --from=build /app /app
+
 
 EXPOSE 3000
 
